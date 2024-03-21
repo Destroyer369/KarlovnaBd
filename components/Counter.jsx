@@ -57,11 +57,11 @@ const Counter = ({ volume, onToggleCardVisibility }) => {
 
   useEffect(() => {
     const now = Date.now();
-    const randomDelay = Math.floor(Math.random() * (500 - 100 + 1) + 100); // Генерируем случайное число от 100 до 500
+    const randomDelay = Math.floor(Math.random() * (350 - 100 + 1) + 100); // Генерируем случайное число от 100 до 350
     const timePassed = now - lastChangeTime;
 
-    if (volume > 10 && !isEditable && timePassed >= randomDelay) {
-      // Проверяем, что volume больше 10 и прошло время, больше или равное randomDelay
+    if (volume > 5 && !isEditable && timePassed >= randomDelay) {
+      // Проверяем, что volume больше 5 и прошло время, больше или равное randomDelay
       setCount((prevCount) => Math.max(prevCount - 1, 0));
       setLastChangeTime(now); // Обновляем время последнего изменения
     }
