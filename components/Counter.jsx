@@ -75,11 +75,11 @@ const Counter = ({ volume, onToggleCardVisibility }) => {
   return (
     <Box>
       {showCongrats ? (
-        <Box h="70%">
+        <Box h="auto" mb= "20px">
           <Congratulations />{" "}
         </Box>
       ) : (
-        <Box h="70%">
+        <Box h="auto" mb= "20px">
           <Cake count={count} maxCount={maxCount} />
         </Box>
       )}

@@ -37,7 +37,7 @@ const Congratulations = () => {
       alignItems="center"
       w="100%"
       h="70vh"
-      overflow="hidden"
+      // overflow="hidden"
     >
       {!showCake ? (
         <Box>
