@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Counter from "./Counter";
 import { Box } from "@chakra-ui/react";
 
-const VolumeMeter = ({ stream }) => {
+const VolumeMeter = ({ stream, onToggleCardVisibility  }) => {
   const [volume, setVolume] = useState(0);
 
   useEffect(() => {
@@ -41,19 +41,19 @@ const VolumeMeter = ({ stream }) => {
   }, [stream]);
 
   // Простая логика для демонстрации: шкала увеличивается линейно с "громкостью"
-  const volumeBarStyle = {
-    height: "50px",
-    width: `${volume * 5}px`, // Увеличиваем масштаб
-    backgroundColor: "green",
-    transition: "width 0.1s ease",
-    maxWidth: "100%", // Ограничиваем максимальную ширину
-  };
+  // const volumeBarStyle = {
+  //   height: "50px",
+  //   width: `${volume * 5}px`, // Увеличиваем масштаб
+  //   backgroundColor: "green",
+  //   transition: "width 0.1s ease",
+  //   maxWidth: "100%", // Ограничиваем максимальную ширину
+  // };
 
   return (
     <Box>
-      <Box style={volumeBarStyle}>{Math.round(volume)}</Box>
+      {/* <Box style={volumeBarStyle}>{Math.round(volume)}</Box> */}
       <Box>
-        <Counter volume={volume} />
+      <Counter volume={volume} onToggleCardVisibility={onToggleCardVisibility} />
       </Box>
     </Box>
   );
@@ -61,7 +61,7 @@ const VolumeMeter = ({ stream }) => {
 
 VolumeMeter.propTypes = {
   stream: PropTypes.instanceOf(MediaStream).isRequired,
-  setVolume: PropTypes.func.isRequired,
+  onToggleCardVisibility: PropTypes.func, // Добавляем это
 };
 
 export default VolumeMeter;

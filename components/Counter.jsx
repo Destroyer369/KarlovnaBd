@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Box, Button, Text, IconButton } from "@chakra-ui/react";
-import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
+import { FaPlus, FaMinus } from "react-icons/fa";
 import Cake from "./Cake";
 import Congratulations from "./Congratulations";
 
-const Counter = ({ volume }) => {
+const Counter = ({ volume, onToggleCardVisibility }) => {
   const [count, setCount] = useState(0);
   const [isEditable, setIsEditable] = useState(true);
   const [lastChangeTime, setLastChangeTime] = useState(Date.now());
   const [maxCount, setMaxCount] = useState(0);
   const [showCongrats, setShowCongrats] = useState(false);
-  
+
   useEffect(() => {
     // Показываем Congratulations, если счётчик достиг 0 после его активации
     if (!isEditable && count === 0) {
@@ -28,8 +28,9 @@ const Counter = ({ volume }) => {
         return newCount;
       });
     }
-    if (count > 28) {
-        handleDone();
+    if (count > 30) {
+      handleDone();
+      alert("Ты что СТАРУХА ?");
     }
   };
 
@@ -43,52 +44,81 @@ const Counter = ({ volume }) => {
 
   const handleDone = () => {
     setIsEditable(false);
+    onToggleCardVisibility(false); // Предполагаем, что при вызове "Готово" мы хотим скрыть Card
   };
 
   const handleReset = () => {
     setCount(0);
     setIsEditable(true);
-    setMaxCount(0); // Сбрасываем maxCount
+    setMaxCount(0);
     setShowCongrats(false);
+    onToggleCardVisibility(true); // Показываем Card при сбросе
   };
 
   useEffect(() => {
     const now = Date.now();
+    const randomDelay = Math.floor(Math.random() * (500 - 100 + 1) + 100); // Генерируем случайное число от 100 до 500
     const timePassed = now - lastChangeTime;
 
-    if (volume > 20 && !isEditable && timePassed >= 400) {
-      // Проверяем, что volume больше 5 и прошло 1 секунду
+    if (volume > 10 && !isEditable && timePassed >= randomDelay) {
+      // Проверяем, что volume больше 10 и прошло время, больше или равное randomDelay
       setCount((prevCount) => Math.max(prevCount - 1, 0));
       setLastChangeTime(now); // Обновляем время последнего изменения
     }
   }, [volume, isEditable, lastChangeTime]);
 
-  
-
-  
+  Counter.propTypes = {
+    volume: PropTypes.number.isRequired,
+    onToggleCardVisibility: PropTypes.func, // Добавляем это
+  };
 
   return (
     <Box>
-      {showCongrats ? <Congratulations /> : <Cake count={count} maxCount={maxCount}/>}
-      <Text mb="4">Счётчик: {count}</Text>
+      {showCongrats ? (
+        <Box h="70%">
+          <Congratulations />{" "}
+        </Box>
+      ) : (
+        <Box h="70%">
+          <Cake count={count} maxCount={maxCount} />
+        </Box>
+      )}
+      {isEditable && (
+        <Text fontSize="xl" mb="4">
+          Сколько нам годиков : {count}
+        </Text>
+      )}
+
       <IconButton
-        icon={<CiSquarePlus size={30} />}
+        colorScheme="teal"
+        variant="outline"
+        icon={<FaPlus size={15} />}
         onClick={handleIncrement}
         isDisabled={!isEditable}
         aria-label="Увеличить счётчик"
         mr="2"
       />
       <IconButton
-        icon={<CiSquareMinus size={30} />}
+        colorScheme="teal"
+        variant="outline"
+        icon={<FaMinus size={15} />}
         onClick={handleDecrement}
         isDisabled={!isEditable}
         aria-label="Уменьшить счётчик"
         mr="2"
       />
-      <Button onClick={handleDone} isDisabled={!isEditable} mr="2">
+      <Button
+        colorScheme="teal"
+        variant="outline"
+        onClick={handleDone}
+        isDisabled={!isEditable}
+        mr="2"
+      >
         Готово
       </Button>
-      <Button onClick={handleReset}>Обновить счётчик</Button>
+      <Button colorScheme="teal" variant="outline" onClick={handleReset}>
+        Погнали ещё раз
+      </Button>
     </Box>
   );
 };

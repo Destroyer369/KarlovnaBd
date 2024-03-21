@@ -32,7 +32,7 @@ const Cake = ({ count, maxCount }) => {
   }, [count, flamesPositions, maxCount]);
 
   return (
-    <Flex position="relative" direction="column" alignItems="center" justifyContent="center" w="100%" h="70vh">
+    <Flex position="relative" direction="column" alignItems="center" justifyContent="center" w="100%" h="50vh">
       {/* Изображение cake */}
       <Box w="400px" h="200px" marginBottom="-230px">
         <Image src={cake} />
