@@ -49,7 +49,7 @@ const Microphone = () => {
 
   return (
     // <Box className="App">
-    <Box bg="" pt="25px">
+    <Box h="auto" pt="25px" p={{ base: "20px", md: "20px", lg: "20px" }}>
       <Flex
         direction="column"
         textAlign="center"
@@ -58,20 +58,33 @@ const Microphone = () => {
         alignItems="center"
       >
         <Box pb="20px">
-          <Text fontSize="6xl" fontWeight="bold" color="#739A9B">
-            Николаева, с днём Рождения!
-          </Text>
-          <Text fontSize="md">
-            *Возможно браузер у тебя попросит активировать микрофон, нужно
-            разрешить его использовать
+          <Stack spacing={0}>
+            <Text
+              fontSize={{ base: "34px", md: "60px", lg: "66px" }}
+              fontWeight="bold"
+              color="#739A9B"
+            >
+              Николаева,
+            </Text>
+            <Text
+              fontSize={{ base: "34px", md: "60px", lg: "66px" }}
+              fontWeight="bold"
+              color="#739A9B"
+            >
+              с днём Рождения!
+            </Text>
+          </Stack>
+          <Text fontSize={{ base: "12px", md: "14px", lg: "16px" }} color="#b5b5b5">
+            *Приложение запросит у тебя разрешение на микрофон - подтверди
           </Text>
         </Box>
         <Button
+        size= {{ base: "sm", md: "md", lg: "md" }} 
           colorScheme="teal"
           variant="outline"
           onClick={() => (isMicOn ? turnOffMic() : turnOnMic())}
         >
-          {isMicOn ? "Выключить микрофон" : "Включить микрофон"}
+          {isMicOn ?"Закончить праздник" : "Начать праздник"}
         </Button>
         {isMicOn && micStream && (
           <>
@@ -79,15 +92,15 @@ const Microphone = () => {
               {isMicOn && micStream && isCardVisible && (
                 <Card>
                   <CardBody>
-                    <Stack textAlign="left">
-                      <Text>1. Нажми + и поймёшь что к чему.</Text>
+                    <Stack textAlign="left" spacing={1}>
+                      <Text>1. Нажми ниже +.</Text>
                       <Text>
-                        2. Нажми готово, когда свечек будет достаточно
+                        2. Нажми -готово, когда свечек будет достаточно
                       </Text>
                       <Text>
-                        3. Пойми где у тебя микрофон, загадывай желание
+                        3. Загадай желание
                       </Text>
-                      <Text>4. Дуй в микрофон и произойдёт магия</Text>
+                      <Text>4. Задувай свечи</Text>
                     </Stack>
                   </CardBody>
                 </Card>

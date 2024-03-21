@@ -32,13 +32,13 @@ const Cake = ({ count, maxCount }) => {
   }, [count, flamesPositions, maxCount]);
 
   return (
-    <Flex position="relative" direction="column" alignItems="center" justifyContent="center" w="100%" h="50vh">
+    <Flex position="relative" direction="column" alignItems="center" justifyContent="flex-end" w="100%" h={{base: "40vh", md: "50vh"}}>
       {/* Изображение cake */}
-      <Box w="400px" h="200px" marginBottom="-230px">
+      <Box w={{base: "80%", md: "400px"}} h="200px" marginBottom="-230px">
         <Image src={cake} />
       </Box>
       {/* Контейнер для свечей и пламени */}
-      <Box position="relative" w="350px" h="300px">
+      <Box position="relative" ml="15px" w="250px" h="300px">
         {/* Пламя */}
         {flamesPositions.map((pos, index) => (
           <Image
@@ -71,3 +71,36 @@ Cake.propTypes = {
 };
 
 export default Cake;
+
+
+// <Flex position="relative" direction="column" alignItems="center" justifyContent="center" w="100%" h="50vh">
+//       {/* Изображение cake */}
+//       <Box w="400px" h="200px" marginBottom="-230px">
+//         <Image src={cake} />
+//       </Box>
+//       {/* Контейнер для свечей и пламени */}
+//       <Box position="relative" w="350px" h="300px">
+//         {/* Пламя */}
+//         {flamesPositions.map((pos, index) => (
+//           <Image
+//             key={`flame-${index}`}
+//             src={fire}
+//             position="absolute"
+//             top={`${pos.top}%`}
+//             left={`${pos.left}%`}
+//             w="10px"
+//           />
+//         ))}
+//         {/* Свечи */}
+//         {candlesPositions.map((pos, index) => (
+//           <Image
+//             key={`candle-${index}`}
+//             src={candle}
+//             position="absolute"
+//             top={`${pos.top}%`}
+//             left={`${pos.left}%`}
+//             w="10px"
+//           />
+//         ))}
+//       </Box>
+//     </Flex>

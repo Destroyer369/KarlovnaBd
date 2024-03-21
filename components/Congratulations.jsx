@@ -62,27 +62,30 @@ const Congratulations = () => {
         </Box>
       ) : (
         <Box>
-          <Image src={shoes} alt="shoes" w="20%" rounded="full" marginLeft="auto" marginRight="auto"/>
-          <Button colorScheme="teal" variant="outline" onClick={onOpen} mt='25px'>
-            Открыть письмо
+          <Image src={shoes} alt="shoes" w={{base: "80%", md: "30%"}}rounded="full" marginLeft="auto" marginRight="auto" border="1px" borderColor="#739A9B"/>
+          <Button size={{ base: "sm", md: "md", lg: "md" }} colorScheme="teal" variant="outline" onClick={onOpen} mt='25px'>
+            Открыть записку
           </Button>
-          <Modal isOpen={isOpen} onClose={onClose}>
+          <Box>
+          <Modal isOpen={isOpen} onClose={onClose} size={{base: "sm", md: "md"}}>
             <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Hello!</ModalHeader>
+            <ModalContent >
+              <ModalHeader>А ты точно уже не парти-пупер?</ModalHeader>
               <ModalCloseButton />
-              <ModalBody>
-                Конечно, эти туфли хоть и очень красивые,и вообще ты будешь в них сног-шибательна. Не туфли конечно, но я могу только так подарить радость :D Ниже будет кнопка, чтобы перейти в документ с поздравлением тебе надо на неё нажать! 
+              <ModalBody >
+                Конечно, эти туфли хоть и очень красивые,и вообще ты будешь в них сног-шибательна. Я могу только так подарить их фотографию и хорошее настроение :D 
+                Ниже есть кнопка, перейди к поздравлению! 
               </ModalBody>
 
               <ModalFooter>
-                <Button colorScheme="teal" variant="ghost" mr={3} onClick={onClose}>
-                  Close
+                <Button size= {{ base: "sm", md: "md", lg: "md" }}  colorScheme="teal" variant="ghost" mr={3} onClick={onClose}>
+                  Закрыть
                 </Button>
-                <Button colorScheme="teal" variant="outline" onClick={() => window.open('https://docs.google.com/document/d/1E9Fm4oeTiHTR6sM8HzLvJ_tyMv0XnI0G3KmjJDR7tGk/edit?usp=sharing', '_blank')}>Перейти к поздравлению</Button>
+                <Button size= {{ base: "sm", md: "md", lg: "md" }}  colorScheme="teal" variant="outline" onClick={() => window.open('https://docs.google.com/document/d/1E9Fm4oeTiHTR6sM8HzLvJ_tyMv0XnI0G3KmjJDR7tGk/edit?usp=sharing', '_blank')}>Перейти к поздравлению</Button>
               </ModalFooter>
             </ModalContent>
           </Modal>
+          </Box>
         </Box>
       )}
     </Flex>

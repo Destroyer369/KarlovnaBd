@@ -31,6 +31,7 @@ const Counter = ({ volume, onToggleCardVisibility }) => {
     if (count > 30) {
       handleDone();
       alert("Ты что СТАРУХА ?");
+      handleReset();
     }
   };
 
@@ -75,21 +76,22 @@ const Counter = ({ volume, onToggleCardVisibility }) => {
   return (
     <Box>
       {showCongrats ? (
-        <Box h="auto" mb= "20px">
+        <Box h="auto" mb="25px">
           <Congratulations />{" "}
         </Box>
       ) : (
-        <Box h="auto" mb= "20px">
+        <Box h="auto" mb="20px">
           <Cake count={count} maxCount={maxCount} />
         </Box>
       )}
       {isEditable && (
-        <Text fontSize="xl" mb="4">
+        <Text fontSize={{ base: "16px", md: "20px", lg: "20px" }} mb="4">
           Сколько нам годиков : {count}
         </Text>
       )}
 
       <IconButton
+        size= {{ base: "sm", md: "md", lg: "md" }} 
         colorScheme="teal"
         variant="outline"
         icon={<FaPlus size={15} />}
@@ -99,6 +101,7 @@ const Counter = ({ volume, onToggleCardVisibility }) => {
         mr="2"
       />
       <IconButton
+        size= {{ base: "sm", md: "md", lg: "md" }} 
         colorScheme="teal"
         variant="outline"
         icon={<FaMinus size={15} />}
@@ -108,6 +111,7 @@ const Counter = ({ volume, onToggleCardVisibility }) => {
         mr="2"
       />
       <Button
+        size= {{ base: "sm", md: "md", lg: "md" }} 
         colorScheme="teal"
         variant="outline"
         onClick={handleDone}
@@ -116,7 +120,12 @@ const Counter = ({ volume, onToggleCardVisibility }) => {
       >
         Готово
       </Button>
-      <Button colorScheme="teal" variant="outline" onClick={handleReset}>
+      <Button
+        size= {{ base: "sm", md: "md", lg: "md" }} 
+        colorScheme="teal"
+        variant="outline"
+        onClick={handleReset}
+      >
         Погнали ещё раз
       </Button>
     </Box>
