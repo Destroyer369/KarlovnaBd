@@ -62,7 +62,7 @@ const Congratulations = () => {
         </Box>
       ) : (
         <Box maxH="600px">
-          <Image src={shoes} alt="Cake" w="100%" h="50%" rounded="full"/>
+          <Image src={shoes} alt="Cake" w="100%" h="80%" rounded="full"/>
           <Button colorScheme="teal" variant="outline" onClick={onOpen} mt='25px'>
             Открыть письмо
           </Button>
