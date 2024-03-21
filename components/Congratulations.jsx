@@ -35,8 +35,8 @@ const Congratulations = () => {
     <Flex
       direction="column"
       alignItems="center"
+      justifyContent="center"
       w="100%"
-      h="70vh"
       // overflow="hidden"
     >
       {!showCake ? (
@@ -61,8 +61,8 @@ const Congratulations = () => {
           {/* Нажатие кнопки устанавливает showCake в true */}
         </Box>
       ) : (
-        <Box maxH="600px">
-          <Image src={shoes} alt="Cake" w="100%" h="80%" rounded="full"/>
+        <Box>
+          <Image src={shoes} alt="shoes" w="20%" rounded="full" marginLeft="auto" marginRight="auto"/>
           <Button colorScheme="teal" variant="outline" onClick={onOpen} mt='25px'>
             Открыть письмо
           </Button>

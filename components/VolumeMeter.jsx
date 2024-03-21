@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Counter from "./Counter";
-import { Box } from "@chakra-ui/react";
 
 const VolumeMeter = ({ stream, onToggleCardVisibility  }) => {
   const [volume, setVolume] = useState(0);
@@ -50,12 +49,7 @@ const VolumeMeter = ({ stream, onToggleCardVisibility  }) => {
   // };
 
   return (
-    <Box>
-      {/* <Box style={volumeBarStyle}>{Math.round(volume)}</Box> */}
-      <Box>
       <Counter volume={volume} onToggleCardVisibility={onToggleCardVisibility} />
-      </Box>
-    </Box>
   );
 };
 
